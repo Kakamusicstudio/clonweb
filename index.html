@@ -2,12 +2,112 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Redirect</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Akses Terbatas</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #2d2d2d;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #4CAF50;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #555;
+            background-color: #3d3d3d;
+            color: white;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box; /* Penting agar padding tidak merusak lebar */
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .error-msg {
+            color: #ff6b6b;
+            font-size: 14px;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
 </head>
 <body>
+
+    <div class="container">
+        <h2>TUHAN SELALU BERSAMA KITA</h2>
+        <p>DONASI BEBAS KE NO.DANA 08123456789 UNTUK MASUK KE SURGA DUNIA</p>
+        <p>UNTUK MASUKAN KODE MENUJU SURGA DUNIA</p>
+        
+        <input type="password" id="accessCode" placeholder="Masukkan Kode Akses">
+        <button onclick="validateAccess()">Buka Akses</button>
+        
+        <p id="errorMsg" class="error-msg">Kode akses salah!</p>
+    </div>
+
     <script>
-        // Ini kode paling ampuh. Langsung pindah halaman di tab yang sama.
-        window.location.href = "https://id.oyenbelang.com/xpanas";
+        function validateAccess() {
+            const codeInput = document.getElementById('accessCode').value;
+            const errorMsg = document.getElementById('errorMsg');
+            
+            // GANTI "RAHASIA123" dengan kode rahasia yang Anda inginkan
+            const correctCode = "RAHASIA123"; 
+            
+            // GANTI URL ini dengan link tujuan Anda yang aman
+            const destinationUrl = "https://www.google.com"; 
+
+            if (codeInput === correctCode) {
+                // Jika kode benar, arahkan ke link
+                window.location.href = destinationUrl;
+            } else {
+                // Jika salah, tampilkan pesan error
+                errorMsg.style.display = 'block';
+                document.getElementById('accessCode').value = '';
+            }
+        }
+
+        // Optional: Bisa tekan Enter untuk submit
+        document.getElementById("accessCode").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                validateAccess();
+            }
+        });
     </script>
+
 </body>
 </html>
